@@ -7,5 +7,4 @@ def loop():
             break
         except ValueError:
             print (instr, ' is not an integer')
-
 loop()
