@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 </head>
-
 <body class="body">
-	<header>
-		
-	</header>
 	 <body>
-	   <h3>{{ title }}</h3>
+
+	   <h2>{{ title }}</h2>
 	   <br>
 		{% for p in paragraph %}
-		<p>{{ paragraph }}</p>
+		<p>{{ p }}</p>
 		{% endfor %}
-	 </body>
 
+        <br>
+        {% if pagetype == "about" %}
+		<p>Contact box thing is here !!!</p>
+        {% else %}
+		<p>Not about page,Contact box thing is not  here !!!</p>
+		{% endif %}
+	 </body>
+</body>
 </html>
