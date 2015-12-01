@@ -2831,3 +2831,36 @@ if __name__ == "__main__":
 	 </body>
 
 </html>
+
+################
+#### FLASK PASSING VARIABLE FROM .PY TO .HTML WITH LOGIC
+from flask import Flask,render_template
+app = Flask(__name__)
+@app.route('/')
+def homepage():
+    title =  "Sviki Diki is the best"
+    paragraph = [" SO FUCK THE REST !!! SO FUCK THE REST !!! SO FUCK THE REST !!!"," SO FUCK THE REST !!! SO FUCK THE REST !!! SO FUCK THE REST !!!"]
+    return render_template("index.html",title = title, paragraph = paragraph)
+if __name__ == "__main__":
+    app.run()
+#### .HTML
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="body">
+	<header>
+
+	</header>
+	 <body>
+	   <h3>{{ title }}</h3>
+	   <br>
+		{% for p in paragraph %}
+		<p>{{ paragraph }}</p>
+		{% endfor %}
+	 </body>
+
+</html>
