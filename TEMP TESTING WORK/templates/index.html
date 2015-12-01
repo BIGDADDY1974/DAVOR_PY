@@ -12,28 +12,44 @@
 <header>
  	<div class="navbar-header">
     <a class="navbar-brand" rel="home" href="/" title="Python Programming Tutorials ">
-        <img class="img-responsive" style="width:40px; height;40px; margin-top: -10px;" src="/static/images/mainlogo.png">
+        <img class="img-responsive" style="width:40px; height;40px; margin-top: -10px;" src="/static/images/bmw.jpg">
     </a>
   	</div>
 
-	<ul class="nav nav-pills" role="tablist">
-		<a href="/page1"><button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+    <div class="container-fluid">
+
+        <a href="/page1"><button type="button" class="btn btn-default" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px">
 		  <span class="glyphicon glyphicon-share" aria-hidden="true"></span> Please Enter
 		</button></a>
-	</ul>
-	
+
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded=
+                  "false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+             <li><a href="#">Action</a></li>
+             <li><a href="#">Another action</a></li>
+             <li><a href="#">Something else here</a></li>
+             <li role="separator" class="divider"></li>
+             <li><a href="#">Separated link</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    </div>
+
+
+
 </header>
 
+<body>
 
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
-
-
-
-
-
-
-
-
+</body>
 
 
 </html>
