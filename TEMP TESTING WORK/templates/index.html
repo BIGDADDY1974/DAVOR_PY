@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="utf-8">
+	<title>Two Funduro Riders</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon_orange.ico') }}">
 </head>
-<body class="body">
-	 <body>
 
-	   <h2>{{ title }}</h2>
-	   <br>
-		{% for p in paragraph %}
-		<p>{{ p }}</p>
-		{% endfor %}
 
-        <br>
-        {% if pagetype == "about" %}
-		<p>Contact box thing is here !!!</p>
-        {% else %}
-		<p>Not about page,Contact box thing is not  here !!!</p>
-		{% endif %}
-	 </body>
-</body>
+<header>
+ <div class="navbar-header">
+    <a class="navbar-brand" rel="home" href="/" title="Python Programming Tutorials ">
+        <img class="img-responsive" style="width:40px; height;40px; margin-top: -10px;" src="/static/images/mainlogo.png">
+    </a>
+  </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>
+

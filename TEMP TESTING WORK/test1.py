@@ -1,16 +1,15 @@
-from flask import Flask,render_template
+from flask import Flask, render_template,url_for
+
 app = Flask(__name__)
+
 @app.route('/')
 def homepage():
-    title =  "Sviki Diki is the best"
-    paragraph = [" SO FUCK THE REST !!! SO FUCK THE REST !!! SO FUCK THE REST !!!"," SO FUCK THE REST !!! SO FUCK THE REST !!! SO FUCK THE REST !!!"]
-    return render_template("index.html",title = title, paragraph = paragraph)
+    return render_template("index.html")
 
-@app.route('/about')
-def aboutpage():
-    title =  "About this site"
-    paragraph = ["blah blah blah memememememmemememe blah blah blah"]
-    pagetype = "about"
-    return render_template("index.html",title = title, paragraph = paragraph, pagetype = pagetype)
+@app.route('/page1')
+def page1():
+    return render_template("index1.html")
+
 if __name__ == "__main__":
     app.run()
+
