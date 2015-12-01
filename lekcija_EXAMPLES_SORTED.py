@@ -2801,6 +2801,33 @@ def loop():
            print (instr, ' is not an integer')
 #loop()
 
-#########################
-#### TO BE CONTINUED ####
-#########################
+################
+#### FLASK PASSING VARIABLE FROM .PY TO .HTML
+from flask import Flask,render_template
+app = Flask(__name__)
+@app.route('/')
+def homepage():
+    return render_template("index.html",title = " Sviki Diki is the best", paragraph = " SO FUCK THE REST !!!")
+if __name__ == "__main__":
+    app.run()
+#### .HTML
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="body">
+	<header>
+
+	</header>
+	 <body>
+	   <h3>{{ title }}</h3>
+	   <br>
+		{% for p in paragraph %}
+		<p>{{ paragraph }}</p>
+		{% endfor %}
+	 </body>
+
+</html>
