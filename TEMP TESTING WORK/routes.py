@@ -3,17 +3,13 @@ from app import app;
 import redis;
 
 #Connect to redis data store
-r = redis.StrictRedis(host='flaskmva.redis.cache.windows.net',port=6380,ssl=True,db=0, charset="utf-8", decode_responses=True, password='kxmLxHPfw5Xx8piaTlyv5VrPBBkKMoNTG6TNta+Pd5I=');
+#r = redis.StrictRedis(host='flaskmva.redis.cache.windows.net',port=6380,ssl=True,db=0, charset="utf-8", decode_responses=True, password='kxmLxHPfw5Xx8piaTlyv5VrPBBkKMoNTG6TNta+Pd5I=');
 # server/
 @app.route('/')
 def hello():
-
-
     #alternate ways to connect to redis, each command is equivalent
-    #r = redis.StrictRedis();
+    r = redis.StrictRedis();
     #r = redis.StrictRedis('localhost',6379,0);
-
-
     createLink = "<a href='" + url_for('create') + "'>Create a question</a>";
     return """<html>
                    <head>
