@@ -3074,3 +3074,68 @@ def about():
 @app.route('/pitanje/<naslov>')
 def pitanje(naslov):
     return "<h2>" + "primer za parametar " + naslov + " koji smo ranije definisali" + "</h2>";
+
+
+#### FLASK REDIS POP QUIZ AND APP AND ROUTES
+from flask import Flask
+app = Flask(__name__)
+from routes import *
+
+wsgi_app = app.wsgi_app
+from routes import *
+if __name__ == '__main__':
+    import os
+    HOST = os.environ.get('SERVER_HOST', 'localhost')
+    try:
+        PORT = int(os.environ.get('SERVER_PORT', '5555'))
+    except ValueError:
+        PORT = 5555
+    app.run(HOST, PORT)
+##### ROUTES
+from flask import Flask, url_for, request, render_template;
+from app import app;
+import redis;
+r = redis.StrictRedis('localhost',6379,0,charset="UTF-8",decode_responses=True);
+
+@app.route('/')
+def hello():
+    createLink = "<a href='" + url_for('create') + "'>Create a question</a>";
+    return """<html>
+                   <head>
+                       <title>Hello, world!</title>
+                    </head>
+                    <body>
+                       """ + createLink + """
+                    </body>
+               </html>""";
+
+@app.route('/create', methods=['GET', 'POST'])
+def create():
+    if request.method == 'GET':
+
+        return render_template('CreateQuestion.html');
+    elif request.method == 'POST':
+
+        title = request.form['title'];
+        question = request.form['question'];
+        answer = request.form['answer'];
+        r.set(title +':question', question)
+        r.set(title +':answer', answer)
+        return render_template('CreatedQuestion.html', question = question);
+    else:
+        return "<h2>Invalid request</h2>";
+
+@app.route('/question/<title>', methods=['GET', 'POST'])
+def question(title):
+    if request.method == 'GET':
+        question = r.get(title+':question')
+        return render_template('AnswerQuestion.html', question = question);
+    elif request.method == 'POST':
+        submittedAnswer = request.form['submittedAnswer'];
+        answer = r.get(title+':answer')
+        if submittedAnswer == answer:
+            return render_template('Correct.html');
+        else:
+            return render_template('Incorrect.html', submittedAnswer = submittedAnswer, answer = answer);
+    else:
+        return '<h2>Invalid request</h2>';
