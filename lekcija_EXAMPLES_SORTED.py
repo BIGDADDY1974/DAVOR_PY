@@ -2989,3 +2989,62 @@ if __name__ == "__main__":
 <iframe src="https://onedrive.live.com/embed?cid=8DD35AA789EB428A&resid=8DD35AA789EB428A%21407&authkey=AEDcN2p87CO-wmc" width="320" height="180" frameborder="0" scrolling="no"></iframe>
 
 </html>
+
+#### ANOTHER FLASK SIMPLE SOLUTIONWITH HTML INSIDE ROUTE,this is app.py
+from flask import Flask
+app = Flask(__name__)
+
+wsgi_app = app.wsgi_app
+from routes import *
+if __name__ == '__main__':
+    import os
+    HOST = os.environ.get('SERVER_HOST', 'localhost')
+    try:
+        PORT = int(os.environ.get('SERVER_PORT', '5555'))
+    except ValueError:
+        PORT = 5555
+    app.run(HOST, PORT)
+##### This is route.py along with app.py
+from flask import Flask, url_for, request, render_template
+from app import app
+
+@app.route('/')
+def hello():
+    return """
+<html>
+  <body>
+  <div class="nav">
+    <div class="container">
+	<ul>
+	  <li>Davor Svilar</li>
+	  <li>Browse</li>
+	</ul>
+	<ul>
+	<li>Sign Up</li>
+	<li>Log in</li>
+	<li>Help</li>
+	</ul>
+	</div>
+	<div class="jumbotron">
+	    <div>
+	    <h3>"Travel"</h3>
+	    <p>"From apartments and rooms to treehouses and boats: stay in unique spaces in 192 countries."</p>
+	    <p>
+	        <a href="#">"See how to travel on Airbnb"</a>
+	    </p>
+	    </div>
+	    <div class="container">
+	       <h1>"Find a place to stay."</h1>
+	       <p>"Rent from people in over 34,000 cities and 192 countries."</p>
+        </div>
+        <div>
+            <h3>Subheading</h3>
+            <p>Description text.</p>
+            <p>
+                <a href="#">Link text</a>
+            </p>
+        </div>
+    </div>
+  </div>
+  </body>
+</html>"""

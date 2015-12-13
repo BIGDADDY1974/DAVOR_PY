@@ -6,6 +6,44 @@ r=redis.StrictRedis('localhost',6379,0, decode_responses=True,charset='utf-8');
 
 @app.route('/')
 def hello():
+    return """
+<html>
+  <body>
+  <div class="nav">
+    <div class="container">
+	<ul>
+	  <li>Davor Svilar</li>
+	  <li>Browse</li>
+	</ul>
+	<ul>
+	<li>Sign Up</li>
+	<li>Log in</li>
+	<li>Help</li>
+	</ul>
+	</div>
+	<div class="jumbotron">
+	    <div>
+	    <h3>"Travel"</h3>
+	    <p>"From apartments and rooms to treehouses and boats: stay in unique spaces in 192 countries."</p>
+	    <p>
+	        <a href="#">"See how to travel on Airbnb"</a>
+	    </p>
+	    </div>
+	    <div class="container">
+	       <h1>"Find a place to stay."</h1>
+	       <p>"Rent from people in over 34,000 cities and 192 countries."</p>
+        </div>
+        <div>
+            <h3>Subheading</h3>
+            <p>Description text.</p>
+            <p>
+                <a href="#">Link text</a>
+            </p>
+        </div>
+    </div>
+  </div>
+  </body>
+</html>"""
     url = url_for('about');
     link = '<a href="' + url + '">About us!</a>';
     return link;
@@ -42,7 +80,7 @@ def submit():
         title = request.form['title'];
 
         r.set(title+':question',question);
-        r.set(title+':answer',answer);      
+        r.set(title+':answer',answer);
 
         return render_template('CreatedQuestion.html',
                                question = question);
