@@ -2927,3 +2927,65 @@ if __name__ == "__main__":
 	 </body>
 </body>
 </html>
+
+
+##### LOGIN PAGE TWO FUNDUROS TEMPLATE
+from flask import Flask, render_template, redirect, url_for, request
+app = Flask(__name__)
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'TWO' or request.form['password'] != 'FUNDUROS':
+            error = 'Invalid Credentials. Please try again.'
+        else:
+            return redirect(url_for('home'))
+    return render_template('login.html', error=error)
+if __name__ == "__main__":
+    app.run()
+
+#### HTML FOR LOGIN PAGE !!!
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Login for two funduros page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/full-slider.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='bmwfavicon.ico') }}">
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+
+<html>
+  <head>
+    <div class="row text-center"><title>Two Funduros login page</title>
+  </head>
+  <body>
+    <div class="row text-center"><div class="container">
+      </br>
+      </br>
+      <h1>Two Funduros login page</h1>
+      <h3>You must enter "TWO" for username, and "FUNDUROS" for password to enter the site</h3>
+      <br>
+      <form action="" method="post">
+        <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+         <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        <input class="btn btn-default" type="submit" value="Login">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>
+</br>
+</br>
+</br>
+</br>
+
+<iframe src="https://onedrive.live.com/embed?cid=8DD35AA789EB428A&resid=8DD35AA789EB428A%21407&authkey=AEDcN2p87CO-wmc" width="320" height="180" frameborder="0" scrolling="no"></iframe>
+
+</html>
