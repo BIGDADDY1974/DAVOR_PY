@@ -1,58 +1,77 @@
-from flask import Flask, url_for, request, render_template
-from app import app
-import redis
+from flask import Flask, url_for, request, render_template;
+from app import app;
+import redis;
 
-r=redis.StrictRedis('localhost',6379,0, decode_responses=True,charset='utf-8');
-####
+#Connect to redis data store
+r = redis.StrictRedis(host='flaskmva.redis.cache.windows.net',port=6380,ssl=True,db=0, charset="utf-8", decode_responses=True, password='kxmLxHPfw5Xx8piaTlyv5VrPBBkKMoNTG6TNta+Pd5I=');
+# server/
 @app.route('/')
 def hello():
-    url = url_for('about');
-    link = '<a href="' + url + '">About us!</a>';
-    return link;
-####
-@app.route('/create')
+
+
+    #alternate ways to connect to redis, each command is equivalent
+    #r = redis.StrictRedis();
+    #r = redis.StrictRedis('localhost',6379,0);
+
+
+    createLink = "<a href='" + url_for('create') + "'>Create a question</a>";
+    return """<html>
+                   <head>
+                       <title>Hello, world!</title>
+                    </head>
+                    <body>
+                       """ + createLink + """
+                    </body>
+               </html>""";
+
+# server/create
+@app.route('/create', methods=['GET', 'POST'])
 def create():
-    return "<h2>This is a create page</h2>"
-####
-@app.route('/about')
-def about():
-    return 'We are the knights who say Ni!!';
-#####
-@app.route('/pitanje/<naslov>')
-def pitanje(naslov):
-    return "<h2>" + "primer za parametar " + naslov + " koji smo ranije definisali" + "</h2>";
+    if request.method == 'GET':
+        # send the user the form
+        return render_template('CreateQuestion.html');
+    elif request.method == 'POST':
+        # read form data and save it
+        title = request.form['title'];
+        question = request.form['question'];
+        answer = request.form['answer'];
+
+        # Store data in data store
+        # Key name will be whatever title they typed in : Question
+        # e.g. music:question countries:question
+        # e.g. music:answer countries:answer
 
 
+        # done :)
+        #r.set(title +':question', question)
+        #r.set(title +':answer',answer)
+    
+        return render_template('CreatedQuestion.html', question = question);
+    else:
+        return "<h2>Invalid request</h2>";
+
+# server/question/<title>
 @app.route('/question/<title>', methods=['GET', 'POST'])
 def question(title):
     if request.method == 'GET':
-        question = r.get(title+':question')
-        return render_template('AnswerQuestion.html',
-                               question = question)
+        # send the user the form
+
+        #question = r.get(title+':question')
+        # Read question from data store
+      
+        return render_template('AnswerQuestion.html', question = question);
     elif request.method == 'POST':
+        # User has attempted answer. Check if they're correct
         submittedAnswer = request.form['submittedAnswer'];
 
-        answer=r.get(title+':answer')
+        # Read answer from data store
+        # Susan - please add code here
+        #answer = r.get(title+':answer')
 
         if submittedAnswer == answer:
-            return render_template('Correct.html');
+            return "Correct!"
+            #return render_template('Correct.html');
         else:
-            return render_template('Incorrect.html',
-                                   answer = answer,
-                                   submittedAnswer = submittedAnswer);
-
-@app.route('/submit', methods=['GET', 'POST'])
-def submit():
-    if request.method == 'GET':
-        return render_template('CreateQuestion.html');
-    elif request.method == 'POST':
-        question = request.form['question'];
-        answer = request.form['answer'];
-        title = request.form['title'];
-
-        r.set(title+':question',question);
-        r.set(title+':answer',answer);
-
-        return render_template('CreatedQuestion.html',
-                               question = question);
-    return;
+            return render_template('Incorrect.html', submittedAnswer = submittedAnswer, answer = answer);
+    else:
+        return '<h2>Invalid request</h2>';
