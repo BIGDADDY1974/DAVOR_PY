@@ -3048,3 +3048,29 @@ def hello():
   </div>
   </body>
 </html>"""
+
+
+#### ANOTHER SMALL FLASK EXAMPLE of pitanje from routes.py !!!
+from flask import Flask, url_for, request, render_template
+from app import app
+import redis
+
+r=redis.StrictRedis('localhost',6379,0, decode_responses=True,charset='utf-8');
+####
+@app.route('/')
+def hello():
+    url = url_for('about');
+    link = '<a href="' + url + '">About us!</a>';
+    return link;
+####
+@app.route('/create')
+def create():
+    return "<h2>This is a create page</h2>"
+####
+@app.route('/about')
+def about():
+    return 'We are the knights who say Ni!!';
+#####
+@app.route('/pitanje/<naslov>')
+def pitanje(naslov):
+    return "<h2>" + "primer za parametar " + naslov + " koji smo ranije definisali" + "</h2>";

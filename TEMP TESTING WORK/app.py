@@ -1,5 +1,6 @@
 from flask import Flask
 app = Flask(__name__)
+from routes import *
 
 wsgi_app = app.wsgi_app
 from routes import *
