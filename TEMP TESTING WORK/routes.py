@@ -1,33 +1,49 @@
-from flask import Flask,request,render_template,url_for,redirect
+from flask import Flask, url_for, request, render_template
+from app import app
+import redis
 
-app = Flask(__name__)
+r=redis.StrictRedis('localhost',6379,0, decode_responses=True,charset='utf-8');
 
-@app.route('/', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'TWO' or request.form['password'] != 'FUNDUROS':
-            error = 'Invalid Credentials. Please try again.'
+@app.route('/')
+def hello():
+    url = url_for('about');
+    link = '<a href="' + url + '">About us!</a>';
+    return link;
+
+@app.route('/about')
+def about():
+    return 'We are the knights who say Ni!!';
+
+@app.route('/question/<title>', methods=['GET', 'POST'])
+def question(title):
+    if request.method == 'GET':
+        question = r.get(title+':question')
+        return render_template('AnswerQuestion.html',
+                               question = question)
+    elif request.method == 'POST':
+        submittedAnswer = request.form['submittedAnswer'];
+
+        answer=r.get(title+':answer')
+
+        if submittedAnswer == answer:
+            return render_template('Correct.html');
         else:
-            return redirect(url_for('homepage'))
-    return render_template('login.html', error=error)
+            return render_template('Incorrect.html',
+                                   answer = answer,
+                                   submittedAnswer = submittedAnswer);
 
-@app.route('/index')
-def homepage():
-    return render_template("index.html")
+@app.route('/submit', methods=['GET', 'POST'])
+def submit():
+    if request.method == 'GET':
+        return render_template('CreateQuestion.html');
+    elif request.method == 'POST':
+        question = request.form['question'];
+        answer = request.form['answer'];
+        title = request.form['title'];
 
-@app.route('/page1')
-def page1():
-    return render_template("page1.html")
+        r.set(title+':question',question);
+        r.set(title+':answer',answer);      
 
-@app.route('/page2')
-def page2():
-    return render_template("page2.html")
-
-@app.route('/page3')
-def page3():
-    return render_template("page3.html")
-
-if __name__ == "__main__":
-    app.run()
-
+        return render_template('CreatedQuestion.html',
+                               question = question);
+    return;

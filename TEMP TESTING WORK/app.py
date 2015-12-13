@@ -1,17 +1,22 @@
-from flask import Flask, render_template, redirect, url_for, request
+"""
+This script runs the application using a development server.
+It contains the definition of routes and views for the application.
+"""
 
+from flask import Flask
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'TWO' or request.form['password'] != 'FUNDUROS':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('home'))
-    return render_template('login.html', error=error)
+# Make the WSGI interface available at the top level so wfastcgi can get it.
+wsgi_app = app.wsgi_app
 
-if __name__ == "__main__":
-    app.run()
+from routes import *
+
+if __name__ == '__main__':
+    import os
+    HOST = os.environ.get('SERVER_HOST', 'localhost')
+    try:
+        PORT = int(os.environ.get('SERVER_PORT', '5555'))
+    except ValueError:
+        PORT = 5555
+    app.run(HOST, PORT)
 
