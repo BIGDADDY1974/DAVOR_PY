@@ -3139,3 +3139,27 @@ def question(title):
             return render_template('Incorrect.html', submittedAnswer = submittedAnswer, answer = answer);
     else:
         return '<h2>Invalid request</h2>';
+
+
+### SMALL DEF PROGRAMMS
+### reverse txt
+def reverse(text):
+    r_text = ''
+    index = len(text) - 1
+    while index >= 0:
+        r_text += text[index] #string canbe concatenated
+        index -= 1
+    return r_text
+print reverse("hello, world!")
+
+##### DELETE VOWELS SMALL PROGRAM
+def anti_vowel(text):
+    resultat = ""
+    for i in text:
+        if i in "aeiouAEIOU":
+            resultat = resultat + ""
+        else:
+            resultat = resultat + i
+    print resultat
+    return resultat
+anti_vowel("Hey look Words!")

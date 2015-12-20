@@ -1,8 +1,8 @@
 from flask import Flask, url_for, request, render_template;
 from app import app;
 import redis;
-r = redis.StrictRedis('localhost',6379,0,charset="UTF-8",decode_responses=True);
 
+r = redis.StrictRedis(host='davorredis1.redis.cache.windows.net',port=6380,ssl=True,db=0, charset="utf-8", decode_responses=True, password='0kVHmR47IruOCX5lybGUh87pPoBgtPn8ggyfLU7YjsY=');
 @app.route('/')
 def hello():
     createLink = "<a href='" + url_for('create') + "'>Create a question</a>";
