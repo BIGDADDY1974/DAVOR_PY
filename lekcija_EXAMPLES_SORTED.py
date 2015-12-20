@@ -3285,3 +3285,39 @@ print sum(grades)
 print grades_average(grades)
 print grades_variance(scores)
 print grades_std_deviation(variance)
+
+### DICTIONARY
+my_dict = {
+    "Name": "Davor",
+    "Age": 41,
+    "BDFL": True
+}
+
+print my_dict.items()
+print my_dict.keys()
+print my_dict.values()
+
+#### EVENS NUMBERS TO A CERTAIN NUMBER
+evens_to_50 = [i for i in range(51) if i % 2 == 0]
+print evens_to_50
+
+#### EVEN SQUARES
+doubles_by_3 = [x*2 for x in range(1,6) if (x*2) % 3 == 0]
+
+# Complete the following line. Use the line above for help.
+even_squares = [x**2 for x in range(1,11) if (x**2) % 2 == 0]
+
+print even_squares
+
+### REVERSE A LIST
+my_list = range(1, 11)
+backwards = my_list[::-1]
+print backwards
+
+### defining a function differently LAMBDA !!!
+my_list = range(16)
+print filter(lambda x: x % 3 == 0, my_list)
+
+#### LAMBDA FILTERING
+squares = [x**2 for x in range (1,11)]
+print filter(lambda x: x >= 30 and x <= 70, squares)
