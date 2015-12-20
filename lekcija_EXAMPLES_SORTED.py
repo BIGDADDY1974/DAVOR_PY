@@ -3163,3 +3163,125 @@ def anti_vowel(text):
     print resultat
     return resultat
 anti_vowel("Hey look Words!")
+
+### SCRABLLE SCORE
+score = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2,
+         "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3,
+         "l": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1,
+         "r": 1, "u": 1, "t": 1, "w": 4, "v": 4, "y": 4,
+         "x": 8, "z": 10}
+
+def scrabble_score(word):
+    lst = []
+    word = word.lower()
+    for letter in word:
+        for key in score:
+            if letter == key:
+                lst.append(score[key])
+            else:
+                continue
+    return sum(lst)
+
+print scrabble_score('pie')
+
+#### SPLITTING THE TEXT AND SUBSTITUTE IT
+def censor(text, word):
+    result = []
+    t = text.split()
+    for w in t:
+        if w == word:
+            result.append("*"*len(word))
+        else:
+            result.append(w)
+    return " ".join(result)
+
+text = "ace of spades is only ace if the space is valid"
+word = "ace"
+print censor(text, word)
+
+#### COUNTING SEQUENCE
+def count(sequence, item):
+    match = 0
+    for s in sequence:
+        if item == s:
+            match = match + 1
+    return match
+
+sequence =[1,2,1,1]
+item = 1
+print count(sequence,item)
+
+### PURIFY LIST
+def purify(lst):
+    new_lst = []
+    for item in lst:
+        if item % 2 == 0:
+            new_lst.append(item)
+    return new_lst
+
+print purify([1,2,3])
+
+### MULTIPLY A LIST NUMBERS !!!
+def product(numbers):
+    total = 1
+    for n in numbers:
+        total *= n
+    return total
+
+numbers = [4, 5, 5]
+print product(numbers)
+
+##### DELETE A DUPLICATE
+def remove_duplicates(raw):
+    new=[]
+    for i in raw:
+        if i not in new:
+            new.append(i)
+    return new
+raw = [1,1,2,2]
+print remove_duplicates(raw)
+
+#### FINDING A MEDIAN TO THE LIST OF NUMBERS
+def median(data):
+    data.sort()
+    if len(data) % 2 == 0:
+        return (data[len(data) / 2-1] + data[len(data) / 2]) / 2.0
+    return data[int(len(data) / 2 + 0.5)]
+
+### CALCULATING GRADES
+grades = [100, 100, 90, 40, 80, 100, 85, 70, 90, 65, 90, 85, 50.5]
+
+def print_grades(grades):
+    for grade in grades:
+        print grade
+
+def grades_sum(grades):
+    total = 0
+    for grade in grades:
+        total += grade
+    return total
+
+def grades_average(grades):
+    sum_of_grades = grades_sum(grades)
+    average = sum_of_grades / float(len(grades))
+    return average
+
+def grades_variance(scores):
+    average = grades_average(scores)
+    variance = 0
+    for score in scores:
+        print variance
+        variance = variance  + (average - score)**2
+    variance = variance / float(len(scores))
+    return variance
+
+def grades_std_deviation(variance):
+    return variance ** 0.5
+
+variance = grades_variance(grades)
+
+print_grades(grades)
+print sum(grades)
+print grades_average(grades)
+print grades_variance(scores)
+print grades_std_deviation(variance)
