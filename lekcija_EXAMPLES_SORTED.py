@@ -3514,4 +3514,95 @@ class Triangle(object):
 
 my_triangle = Triangle(90, 30, 60)
 print my_triangle.number_of_sides
-print my_triangle.check_angles()
+print my_triangle.check_angles(
+
+#### ANOTHER CLASS EXAMPLE
+class Car(object):
+    condition = "new"
+    def __init__(self,model,color,mpg):
+        self.model = model
+        self.color = color
+        self. mpg = mpg
+
+my_car = Car("DeLorean","silver",88)
+print my_car.condition
+print my_car.model
+print my_car.color
+print my_car.mpg
+
+#### ANOTHER CLASS EXAMPLE
+
+class Car(object):
+    condition = "new"
+    def __init__(self, model, color, mpg):
+        self.model = model
+        self.color = color
+        self.mpg = mpg
+    def display_car(self):
+        return str("This is a %s %s with %d MPG." % (self.color, self.model, self.mpg))
+
+my_car = Car("DeLorean", "silver", 88)
+print my_car.display_car()
+
+### ANOTHER CLASS EXAMPLE
+class Car(object):
+    condition = "new"
+    def __init__(self, model, color, mpg):
+        self.model = model
+        self.color = color
+        self.mpg = mpg
+    def display_car(self):
+        return str("This is a %s %s with %d MPG." % (self.color, self.model, self.mpg))
+
+    def drive_car(self):
+        self.condition = "used"
+
+my_car = Car("DeLorean", "silver", 88)
+print my_car.condition
+my_car.drive_car()
+print my_car.condition
+
+#### ANOTHER CLASS WIT CARS
+class Car(object):
+    condition = "new"
+    def __init__(self, model, color, mpg):
+        self.model = model
+        self.color = color
+        self.mpg   = mpg
+    def display_car(self):
+        print "This is a %s %s with %s MPG." % (self.color, self.model, str(self.mpg))
+    def drive_car(self):
+        self.condition = "used"
+class ElectricCar(Car):
+    def __init__(self,battery_type, model, color, mpg):
+        Car.__init__(self, model, color, mpg)
+        self.battery_type = battery_type
+    def drive_car(self):
+        self.condition = "like new"
+
+
+my_car = ElectricCar("molten salt", "Bmw", "Red", "40")
+print my_car.condition
+print my_car.display_car()
+my_car.drive_car()
+print my_car.condition
+
+### Another CLASS
+class Point3D(object):
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+    def __repr__(self):
+        return "(%d, %d, %d)" % (self.x, self.y, self.z)
+
+my_point = Point3D(1, 2, 3)
+print(my_point)
+
+#### FILE INPUT OUTPUT NEW
+my_list = [i**2 for i in range(1,11)]
+# Generates a list of squares of the numbers 1 - 10
+f = open("output.txt", "w")
+for item in my_list:
+    f.write(str(item) + "\n")
+f.close()
