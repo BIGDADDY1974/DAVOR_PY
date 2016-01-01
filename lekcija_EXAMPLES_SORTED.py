@@ -3606,3 +3606,136 @@ f = open("output.txt", "w")
 for item in my_list:
     f.write(str(item) + "\n")
 f.close()
+
+#### PANDAS MODULE DATA ANALYST
+import pandas as pd
+import datetime
+import pandas.io.data as web
+import matplotlib.pyplot as plt
+from matplotlib import style
+
+style.use('fivethirtyeight')
+start = datetime.datetime(2010, 1, 1)
+end = datetime.datetime(2015, 8, 22)
+df = web.DataReader("XOM", "yahoo", start, end)
+print(df)
+print(df.head())
+
+df['Adj Close'].plot()
+plt.show()
+
+##### PANDAS printing and visualizing data frames
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib import style
+style.use('fivethirtyeight')
+
+web_stats = {'Day':[1,2,3,4,5,6],'Visitors':[43,34,65,56,29,76],'Bounce Rate':[65,67,78,65,45,52]}
+
+df = pd.DataFrame(web_stats)
+print(df)
+
+#### PANDAS printing and visualizing data frames head and tail and indexing, printing a row or a list
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib import style
+style.use('fivethirtyeight')
+
+web_stats = {'Day':[1,2,3,4,5,6,7,8,9,10],'Visitors':[43,34,65,56,29,76,66,45,83,34],'Bounce Rate':[65,67,78,65,45,52,45,68,56,39]}
+
+df = pd.DataFrame(web_stats)
+
+# print(df)
+# print(df.head())
+# print(df.head(3))
+# print(df.tail())
+# print(df.tail(2))
+
+df = df.set_index('Day')
+print (df)
+
+print(df['Visitors'])
+print(df['Bounce Rate'])
+
+print(df['Visitors'])
+print(df['Bounce_Rate'])
+print(df[['Visitors','Bounce_Rate']])
+
+print(df.Visitors.tolist())
+
+#### PANDAAS MATHPLOT LIB fooling arround
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib import style
+import numpy as np
+style.use('fivethirtyeight')
+
+web_stats = {'Day':[1,2,3,4,5,6,7,8,9,10]
+    ,'Visitors':[43,34,65,56,29,76,66,45,83,34]
+    ,'Bounce_Rate':[65,67,78,65,45,52,45,68,56,39]}
+
+df = pd.DataFrame(web_stats)
+
+# print(df)
+# print(df.head())
+# print(df.head(3))
+# print(df.tail())
+# print(df.tail(2))
+
+print(df['Visitors'])
+print(df['Bounce_Rate'])
+print(df[['Visitors','Bounce_Rate']])
+print(df.Visitors.tolist())
+print (np.array(df[['Visitors','Bounce_Rate']]))
+df2 =pd.DataFrame(np.array(df[['Visitors','Bounce_Rate']]))
+print (df2)
+df.plot()
+df2.plot()
+plt.show()
+
+
+#### DATA ANLYSIS WITH PAMDA AND MATHPLOT LIB reading from csv
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("ZILL-Z77006_MPC.csv")
+print(df.head())
+
+df.set_index("Date", inplace=True)
+df.to_csv("ZILL-Z77006_MPC2.csv")
+
+df = pd.read_csv("ZILL-Z77006_MPC2.csv")
+print(df.head())
+
+df = pd.read_csv("ZILL-Z77006_MPC2.csv", index_col=0)
+print(df.head())
+
+df.columns = ["Austin HPI"]
+print(df.head())
+
+df.plot()
+plt.show()
+
+### DATA ANALYSIS WITH PANDA AND QUANDLE BS4
+import Quandl
+import pandas as pd
+from bs4 import BeautifulSoup
+
+api_key = open('quandlapikey.txt','r').read()
+df = Quandl.get("FMAC/HPI_TX", authtoken=api_key)
+
+print(df.head())
+
+fiddy_states = pd.read_html("https://simple.wikipedia.org/wiki/List_of_U.S._states")
+#This is a list from https://simple.wikipedia.org/wiki/List_of_U.S._states
+print(fiddy_states)
+
+#This is a dataframe from https://simple.wikipedia.org/wiki/List_of_U.S._states
+print(fiddy_states[0])
+
+#This is a column from https://simple.wikipedia.org/wiki/List_of_U.S._states
+print(fiddy_states[0][0])
+
+for abbv in fiddy_states[0][0][1:]:
+    #print(abbv)
+    print("FMAC/HPI_"+str(abbv))
