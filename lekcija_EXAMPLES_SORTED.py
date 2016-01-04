@@ -3826,3 +3826,38 @@ print (merged)
 merged = pd.merge(df1,df3, on="Year", how = "inner")
 merged.set_index("Year", inplace=True)
 print (merged)
+
+#### WRITING AN OUTPUT OF A FILE !!!
+my_list = [i**2 for i in range(1,11)]
+my_file = open("output.txt", "r+")
+for item in my_list:
+    f.write(str(item) + "\n")
+f.close()
+
+##### READING FROM A FILE !!!
+my_file = open("output.txt", "r")
+my_file = my_file.read()
+print my_file
+my_file.close()
+
+
+#### EXAMPLE OF READING A TEXT LINE
+# TEXT.TXT
+# I'm the first line of the file!
+# I'm the second line.
+# Third line here, boss.
+my_file = open("text.txt", "r+")
+print("File Opened")
+print my_file.readline()
+print my_file.readline()
+print my_file.readline()
+my_file.close()
+
+
+####ANOTHER EXAMPLE OF READ AND WRITE FILE
+with open("text.txt", "w") as textfile:
+	textfile.write("Success!")
+
+with open("text.txt", "w") as my_file:
+	my_file.write("I am the best there is :-)")
+
