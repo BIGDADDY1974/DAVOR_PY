@@ -74,6 +74,20 @@ def question(title):
     else:
         return '<h2>Invalid request</h2>';
 
+# This is a route to quiz site WHOS ZOUR DADDY
+
+@app.route("/main")
+def main():
+    return render_template("main.html")
+
+@app.route("/wrong")
+def wrong():
+    return render_template("wrong.html")
+
+@app.route("/right")
+def right():
+    return render_template("right.html")
+
 if __name__ == '__main__':
     app.run()
 
