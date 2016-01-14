@@ -1,19 +1,15 @@
 import MySQLdb;
-
 class Client(object):
-
     def __init__(self):
         self.connection = MySQLdb.connect("localhost","root","kurbla25","quizdb");
         self.cursor = self.connection.cursor();
         return;
-
     def saveQuestion(self, title, question, answer):
         sql = "INSERT INTO questions VALUES ("+"'"+(title)+"',"+"'"+(question)+"',"+"'"+(answer)+"',"+"1"+")";
         self.cursor.execute(sql);
         self.connection.commit();
         self.connection.close();
         return;
-
     def getQuestion(self, title):
         sql = "SELECT Description FROM questions WHERE QuestionName = '"+(title)+"'";
         self.cursor.execute(sql);
@@ -27,7 +23,6 @@ class Client(object):
             else:
                 pass
         return exit;
-
     def getAnswer(self, title):
         try:
             sql = "SELECT CorrectAnswer FROM questions WHERE QuestionName = '"+(title)+"'";
