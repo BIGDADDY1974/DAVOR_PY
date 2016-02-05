@@ -4075,3 +4075,109 @@ plt.show()
 #
 # print (divide(8,2))
 # print (divide(8,0))
+
+#### DECORATORES with @ SZNTHETIC SUGAR
+# def handleEX(printmsg):
+#     def inner_handleEX(func):
+#         def inner(*args,**kargs):
+#             try:
+#                 return func(*args,**kargs)
+#             except Exception as ex:
+#                 if printmsg:
+#                     print ("an exception was thrown",ex)
+#                 return ("N/A")
+#         return (inner)
+#     return (inner_handleEX)
+#
+# @handleEX(False)
+# def divide(x,y):
+#     return (x/y)
+# print (divide(8,2))
+# print (divide(8,0))
+
+
+#### MOZGALICE
+# def f(x,l= []):
+#     for i in range(x):
+#         l.append(i*i)
+#     print(l)
+# f(2)
+# f(4,[3,2,1])
+# f(3)
+###RESULT
+# [0, 1]
+# [3, 2, 1, 0, 1, 4, 9]
+# [0, 1, 0, 1, 4]
+
+# ### MOZGALICE
+# A0 = dict(zip(('a','b','c','d','e'),(1,2,3,4,5)))
+# A1 = range(10)
+# A2 = sorted([i for i in A1 if i in A0])
+# A3 = sorted([A0[s] for s in A0])
+# A4 = [i for i in A1 if i in A3]
+# A5 = {i:i*i for i in A1}
+# A6 = [[i,i*i] for i in A1]
+# print ("")
+# print(A0,end="\n")
+# print(A1,end="\n")
+# print(A2,end="\n")
+# print(A3,end="\n")
+# print(A4,end="\n")
+# print(A5,end="\n")
+# print(A6,end="\n")
+### RESULT
+# {'a': 1, 'e': 5, 'c': 3, 'b': 2, 'd': 4}
+# range(0, 10)
+# []
+# [1, 2, 3, 4, 5]
+# [1, 2, 3, 4, 5]
+# {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+# [[0, 0], [1, 1], [2, 4], [3, 9], [4, 16], [5, 25], [6, 36], [7, 49], [8, 64], [9, 81]]
+
+#### GO TO THE DIR NAND FIND OUT THE LIST OF FILES
+# import os
+# def print_directory_contents(sPath):
+#     import os
+#     for sChild in os.listdir(sPath):
+#         sChildPath = os.path.join(sPath,sChild)
+#         if os.path.isdir(sChildPath):
+#             print_directory_contents(sChildPath)
+#         else:
+#             print(sChildPath)
+#
+# print(print_directory_contents("C:/PYPROJECTS/"))
+
+# #### EXAMPLES INTERVIEW
+# l_mem = []
+# l = l_mem           # the first call
+# for i in range(2):
+#     l.append(i*i)
+# print(l)            # [0, 1]
+# l = [3,2,1]         # the second call
+# for i in range(3):
+#     l.append(i*i)
+# print(l)            # [3, 2, 1, 0, 1, 4]
+# l = l_mem           # the third call
+# for i in range(3):
+#     l.append(i*i)
+# print(l)            # [0, 1, 0, 1, 4]
+
+#### EXAMPLES FOR INTERVIEW
+# def f(*args,**kwargs): print(args, kwargs)
+# l = [1,2,3]
+# t = (4,5,6)
+# d = {'a':7,'b':8,'c':9}
+# print(f())
+# print(f(1,2,3))
+# f(1,2,3,"groovy")
+# f(a=1,b=2,c=3)
+# f(a=1,b=2,c=3,zzz="hi")
+# f(1,2,3,a=1,b=2,c=3)
+# () {}
+# None
+# (1, 2, 3) {}
+# None
+# (1, 2, 3, 'groovy') {}
+# () {'c': 3, 'b': 2, 'a': 1}
+# () {'c': 3, 'b': 2, 'zzz': 'hi', 'a': 1}
+# (1, 2, 3) {'c': 3, 'b': 2, 'a': 1}
