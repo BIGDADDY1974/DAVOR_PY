@@ -3967,3 +3967,111 @@ HPI_data = pd.read_pickle('fiddy_states2.pickle')
 HPI_data.plot()
 plt.legend().remove()
 plt.show()
+
+### NEW SMALL EXAMPLES OF CODE GENARATORS
+# nums = [1,2,3,4,5,6,9]
+# squares = (num*num for num in nums)
+# for square in squares:
+#     print (str(square),end="," )
+
+# ### NEW SMALL EXAMPLES OF CODE GENERATORS
+# def gen_squares(nums):
+#     result = []
+#     for num in nums:
+#         result.append(num*num)
+#     return result
+# nums = [1,2,3,4,5,6,9]
+# print(gen_squares(nums))
+#
+# # ### NEW SMALL EXAMPLES OF CODE GENERATORS YIELD
+# def gen_squares(nums):
+#     for num in nums:
+#         yield (num*num)
+# nums = [1,2,3,4,5,6,9]
+# func = gen_squares(nums)
+# print (next(func))
+# print (next(func))
+# print (next(func))
+# print (next(func))
+# print (next(func))
+# print (next(func))
+# print (next(func))
+
+# ### NEW SMALL EXAMPLES OF CODE GENERATORS YIELD
+# def func():
+#     yield 1
+#     yield 2
+#     yield 3
+# gen = func()
+# print(next(gen),next(gen),next(gen))
+
+### NEW SMALL EXAMPLES OF CODE GENERATORS YIELD
+# nums = [1,2,3,4,5,6,9]
+# def gen_squares(nums):
+#     print ("Begin GENERATORS")
+#     for num in nums:
+#         yield (num*num)
+#         print ("After YIELD")
+# def main():
+#     squares = gen_squares(nums)
+#     print ("Made GENERATOR")
+#     for square in squares:
+#         print ("control in CALLER")
+#         print (square)
+# main()
+#
+# Made GENERATOR
+# Begin GENERATORS
+# control in CALLER
+# 1
+# After YIELD
+# control in CALLER
+# 4
+# After YIELD
+# control in CALLER
+# 9
+# After YIELD
+# control in CALLER
+# 16
+# After YIELD
+# control in CALLER
+# 25
+# After YIELD
+# control in CALLER
+# 36
+# After YIELD
+# control in CALLER
+# 81
+# After YIELD
+
+### DECORATORES EXAMPLE
+# def handleEX(func):
+#     def inner(*args,**kargs):
+#         try:
+#             return func(*args,**kargs)
+#         except Exception as ex:
+#             print ("an exception was thrown",ex)
+#             return ("N/A")
+#     return (inner)
+#
+# def divide(x,y):
+#     return (x/y)
+# divide = handleEX(divide)
+# print (divide(8,2))
+# print (divide(8,0))
+
+#### DECORATORES @@@@@@
+# def handleEX(func):
+#     def inner(*args,**kargs):
+#         try:
+#             return func(*args,**kargs)
+#         except Exception as ex:
+#             print ("an exception was thrown",ex)
+#             return ("N/A")
+#     return (inner)
+# @handleEX
+# def divide(x,y):
+#     return (x/y)
+#
+# print (divide(8,2))
+# print (divide(8,0))

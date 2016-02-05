@@ -1,0 +1,467 @@
+# cars = input("How many cars we have ??? ")
+# print (("There are ") + str(cars) +  (" cars available "))
+
+# my_name = input("What is Your name ??? ")
+# print (("Let's talk about it,D %s.") % str(my_name))
+
+# formatter = ("%r %r %r %r")
+# print ((formatter) % (1, 2, 3, 4))
+# print ((formatter) % ("one", "two", "three", "four"))
+# print ((formatter) % (True, False, False, True))
+# print ((formatter) % (formatter, formatter, formatter, formatter))
+
+# print ("How old are you? Years? ")
+# age = input()
+# print ("How tall are you? In cm ")
+# height = input()
+# print ("How much do you weight? In kg ")
+# weight = input()
+# print (("So, you're %r years old, %r cm tall and %r kg heavy.") % (age, height, weight))
+
+# print ("Rec poruka treba da se odstampa vise puta u istom redu")
+# stampa = input("koliko puta da se ostampa poruka ")
+# stampa = int(stampa)
+# print("Poruka, " * (stampa))
+
+# age1 = 42
+# print (age1)
+# duration = age1 + 34
+# print (duration)
+# print ("________________________")
+
+# name = input("What is your name ")
+# city = input("Where do you live ")
+# country = input("What country is it ")
+# print ((name) + (" lives in city ") + (city) + (" which is in country ") + (country))
+
+# message=("Davor Svilar is the best  ")
+# print((message) +"\n")
+# print(message.upper())
+# print(message.lower())
+# print(message.capitalize())
+# print(message.swapcase())
+# print(message.lower())
+# print(message.capitalize())
+# print(message.swapcase())
+
+# import datetime
+# currentDate = datetime.date.today()
+# print (currentDate)
+# print (currentDate.year)
+# print (currentDate.month)
+# print (currentDate.day)
+
+# import datetime
+# currentTime =datetime.datetime.now()
+# print (currentTime)
+# print (currentTime.hour)
+# print (currentTime.minute)
+# print (currentTime.second)
+
+# deposit = input("How much would You like to deposit ??? ")
+# if int(deposit) >= 100 :
+#    print ("Deposit is greater the 100, You get a free Toaster ")
+# print ("Have a nice day ")
+
+# country = input("What country are you from ")
+# country = country.upper()
+# if country == ("CANADA") :
+#    print ("Helloooooo Canada")
+# elif country == ("GERMANY") :
+#    print ("Gutten Tag, wi getz")
+# elif country == ("FRANCE") :
+#    print ("bonjour, comment allez-vous")
+# else :
+#    print ("De si brate Srbine ")
+
+# wonLottery = True
+# bigWin = True
+# wonLottery = input("Did You won the lottery ??? ").upper()
+# bigWin = input("Did You won big SCORE ??? ").upper()
+# if wonLottery =="YES":
+#    print ("So, You are a WIIIIINNNNEEERRRR !!!")
+# if wonLottery =="YES" and bigWin =="YES" :
+#    print("You can retire now and enjoy Your life in luxery:-) ")
+# elif wonLottery=="YES" or bigWin=="NO":
+#    print("You got something out of playing lottery, but no big Score")
+# else :
+#    print("Thats great, but now go back to work and kiss the bosses ass :-) ")
+# print("Well, we hope You will continue to play our lottery ")
+
+# team = input("Whats Your favorite team ??? ").upper()
+# sport = input ("Whats Your favorite sport ??? ").upper()
+# if sport =="HOCKEY":
+#    print ("GO Hockey !!!")
+#    if team =="SENATORS":
+#        print ("Good luck winning the cup !!!")
+#    print ("We do love hockey")
+# print("Hockey is the best game ever !!!")
+
+
+# for steps in [1,2,3,4,5,6]:
+#    print (steps)
+#    for steps in ["a,b,c,d"]:
+#        print (steps)
+# for steps in [1,2,3,4,5,6]:
+#    print (steps)
+#    for steps in [1,3,4,6]:
+#        print (steps)
+
+# answer = "0"
+# while answer !="42":
+#    answer = input("What is the meaning of life by Hitchikers Guide through Galaxy ???  ")
+#    print ("Wrong answer ")
+# print ("Damn, thats correct, the planet just exploded :-) ")
+
+# WORKING WITH LISTS
+# guests = ["Susan","Christopher","Bill","Satya"]
+# count = (len(guests))
+# print ((count),(guests))
+
+# print("First guest is",guests[0])
+# print("Third guest is", guests[2])
+# print(guests[-1])
+# print(guests[3])
+# # CHANGE THE VALUE IN THE LIST
+# guests[0]=("Steve")
+# print (guests)
+# print("First guest NOW is",guests[0])
+# # ADD A VALUE TO THE END OF THE LIST
+# guests.append("Davor")
+# guests.append("Biljana")
+# print (guests)
+# # REMOVE A VALUE FROM THE LIST
+# guests.remove(guests[3])
+# print (guests)
+# guests.remove("Biljana")
+# print (guests)
+
+# # WORKING WITH LISTS 3
+# guests = ["Susan","Christopher","Bill","Satya"]
+# guests.append("Colin")
+# guests.append("Biljana")
+# guests.append("Davor")
+# for guest in guests:
+#    print (guest)
+
+# ### A TASK IS TO CREATE AND SORT THE LIST
+# print ("Please create a list of names invited to a party")
+# print ("Add a name by name to create a list ")
+# print ("When you are done, type DONE, to finish creating a list")
+# print(" ")
+# guests = []
+# name =" "
+# while name != ("DONE"):
+#    name = input("Please enter a name of the guest ??? ")
+#    name = name.upper()
+#    guests.append(name)
+#    print(" ")
+#    print("When done with adding names input DONE !!!")
+# print ("The list has been created ")
+# guests.remove(guests[-1])
+# print(" ")
+# print (guests)
+# newguests = sorted(guests)
+# print(" ")
+# print ("The list has been sorted ")
+# print (newguests)
+
+## WRITE A LIST TO A FILE
+# fileName = "demo.csv"
+# acessMode = "w"
+# myFile = open(fileName,acessMode)
+# myFile.write(" This is a list of all people invited to the party: \n")
+# myFile.write(" Davor, 41 \n")
+# myFile.write(" Biljana, 39 \n")
+# myFile.write(" Mica, 70 \n")
+# myFile.close()
+# print ("The list have been saved in a file ")
+
+## MORE LOOPS
+# i = 0
+# numbers = []
+# while i < 6:
+#    print ("At the top i is %d" % i)
+#    numbers.append(i)
+#
+#    i = i + 1
+#    print ("Numbers now: ", numbers)
+#    print ("At the bottom i is %d" % i)
+# print ("The numbers: ")
+# # for num in numbers:
+# #    print (numbers)
+
+# ## READING FROM A FILE
+# animalFile = open("demo.csv", "r")
+# allFileContents = animalFile.read()
+# print (allFileContents)
+
+# def main():
+#    printMessage()
+#    return
+# def printMessage():
+#     text = input ("Give me txt ")
+#     for i in range (0,5):
+#         print (text)
+#     return
+# main
+
+# # DEFINING THE FUCTION
+# def main():
+#    names = ["Christopher","Susan","Davor","Biljana"]
+#    print ("The guest list is: ",names)
+#    newName = input("Enter last guest so it could be added to the list ??? ")
+#    names.append(newName)
+#    printNames(names)
+#    return
+# def printNames(names):
+#    print (names)
+#    for name in names:
+#        print (name)
+#    return
+# main()
+
+# def timeSort():
+#    import datetime
+#    currentDate =datetime.date.today()
+#    print (currentDate)
+#    print ("Today date is in dd/mm/yyyy format %s %s %s" % (currentDate.day,currentDate.month,currentDate.year))
+#    return
+# timeSort()
+
+# # LISTS VS DICTIONARIES
+# things = ["a", "b", "c", "d"]
+# print (things[0:4])
+# things.append("Y")
+# print (things[0:5])
+# print ("____________________________________________________")
+# stuff = {'name': 'Zed', 'age': 39, 'height': 6 * 12 + 2}
+# print (stuff)
+# print (stuff['name'])
+# print ("name",stuff['name'])
+# print (stuff['age'])
+# print (stuff['height'])
+# stuff['city'] = "San Francisco"
+# print (stuff['city'])
+# print (stuff ['name'],stuff['age'],stuff['height'],stuff['city'])
+
+# class Bird:
+#    def __init__(self, kind, call):
+#        self.kind = kind
+#        self.call = call
+#    def do_call(self):
+#        print ("a %s goes %s" % (self.kind,self.call))
+# class Parrot(Bird):
+#    def __init__(self):
+#        Bird.__init__(self,"Parrot","Kahhhh")
+# class Cuckoo(Bird):
+#    def __init__(self):
+#        Bird.__init__(self,"Cuckoo","Cuckooo Cuu Cuckooo")
+# if __name__ == ("__main__"):
+#     parrot = Parrot()
+#     cuckoo = Cuckoo()
+# parrot.do_call()
+# cuckoo.do_call()
+
+### MORE USING THE CLASSES EXAMPLES
+# class Song(object):
+#    def __init__(self, lyrics):
+#        self.lyrics = lyrics
+#    def sing_me_a_song(self):
+#        for line in self.lyrics:
+#            print (line)
+# happy_bday = Song(["Happy birthday to you","I don't want to get sued","So I'll stop right there"])
+# bulls_on_parade = Song(["They rally around tha family","With pockets full of shells"])
+# happy_bday.sing_me_a_song()
+# bulls_on_parade.sing_me_a_song()
+
+# result = eval("5+4+6-2-2+12")
+# print (result)
+#
+# welcome = ("Hello World")
+# print (welcome)
+# for character in welcome:
+#    print (character)
+
+# welcome = ("Hello World")
+# print (welcome)
+# for i in range (0,len(welcome),1):
+#    print (welcome[i])
+
+# ### How mwany words in a sentance
+# sentance = input("Please input your sentance : ")
+# sentance = str(sentance)
+# print (sentance)
+# count = 0
+# for word in sentance:
+#    if word == (" "):
+#        count = count +1
+# words = int(count) + 1
+# print ("In sentance (",sentance,") there is",words,"words",sep=(" "))
+
+# def printMessage():
+#    message = input ("Whats Your message??? ")
+#    count = int(input("How many times to display this message??? "))
+#    for i in range (0,(count)):
+#        print (message,end=(":"))
+#    return
+# printMessage()
+
+# ### DEFINING A FUNCTION
+# def main():
+#    timeSort()
+#    printNames()
+#    return
+# def timeSort():
+#    import datetime
+#    currentDate =datetime.date.today()
+#    print (currentDate)
+#    print ("Today date is dd/mm/yyyy ")
+#    print (currentDate.day,".",currentDate.month,".",currentDate.year)
+#    return
+# def printNames():
+#    names = []
+#    count = int(input("How many names do you want, give me a number "))
+#
+#    for i in range (0,(count),1):
+#       newName = input ("Tel me your names ??? ")
+#       names.append(newName)
+#    print (names)
+#    return
+# main()
+
+# import os, glob
+# os.chdir("c:/TEMP")
+# for file in glob.glob("*.jpg"):
+#     print (file)
+
+# for num in range(1,101):
+#     if num % 5 == 0 and num % 3 == 0:
+#         print("FizzBuzz")
+#     elif num % 5 == 0:
+#         print("Fizz")
+#     elif num % 3 == 0:
+#         print("Buzz")
+#     print (num)
+
+
+# a=0
+# b=1
+# for i in range (0,20):
+#     print (a)
+#     a=b
+#     b=a+b
+
+#
+# x = 30
+# def function():
+#    x = 50
+#    print (x)
+#    return x
+# print (x)
+# function()
+
+# x = 30
+# def function():
+#    global x
+#    print (x)
+#    return x
+# print (x)
+# function()
+#
+# for x in range (2,5):
+#    example_list = (23,4,5,8,345,68,7890,2,31,234,554,78,)
+#    print(example_list[x])
+
+# x = [3,5,7,8,9,5,4,3,45,2,34,4]
+# print (x)
+# print (x[4])
+# x.append(100)
+# print (x)
+
+# ## key is a single element, value can be lists, tupels, strings, another dictionary...
+# exDict = {"Bob":27,"Jane":25,"Mark":"Groovy","Pavle":"RED","Killer":[12,3,6,45],"Smurf":"blue"}
+# print (exDict)
+# print ("Jane is ",exDict["Jane"])
+# print ("Smurf is ",exDict["Smurf"])
+# ## ADD TO DICTIONARY
+# exDict["Dick"] = ("QRAC")
+# print (exDict)
+# ## DELETE A KEY deletes a value also
+# del exDict["Mark"]
+# print (exDict)
+# ## REFERENCE A SPECIFIC VALUE INSIDE A VALEU OF A DICT
+# print ("Killer is",exDict["Killer"])
+# print ("First value of Killer is",exDict["Killer"][0])
+# print ("Second value of Killer is",exDict["Killer"][1])
+# print ("Third value of Killer is",exDict["Killer"][2])
+# print ("4th value of Killer is",exDict["Killer"][3])
+# print ("ALL values of Killer are",exDict["Killer"][0],exDict["Killer"][1]
+#       ,exDict["Killer"][2],exDict["Killer"][3])
+
+# mylist = [1,2,3,4,5,6,7,8,9,10]
+# z = len(mylist)
+# for i in range (0,z):
+#     squares = i*i
+#     print (squares)
+
+# mylist = [1,2,3,4,5,6,7,8,9,10]
+# squares = [num*num for num in mylist]
+# print (squares)
+
+#
+# def reverse(text):
+#     r_text = ''
+#     index = len(text) - 1
+#     while index >= 0:
+#         r_text += text[index] #string canbe concatenated
+#         index -= 1
+#     return r_text
+# print (reverse("hello, world!"))
+
+# def anti_vowel(text):
+#     resultat = ""
+#     for i in text:
+#         if i in "aeiouAEIOU":
+#             resultat = resultat + ""
+#         else:
+#             resultat = resultat + i
+#     print (resultat)
+#     return resultat
+# anti_vowel("Hey look Words!")
+
+### DICTIONARY
+# my_dict = {
+#     "Name": "Davor",
+#     "Age": 41,
+#     "BDFL": True
+# }
+#
+# print (my_dict.items())
+# print (my_dict.keys())
+# print (my_dict.values())
+
+# evens_to_50 = [i for i in range(51) if i % 2 == 0]
+# print (evens_to_50)
+
+# nums = [1,2,3,4,5,6,7,8,9,10]
+# mylist = []
+# for letter in "abcd":
+#     for num in range(4):
+#         mylist.append((letter,num))
+# print (mylist)
+
+
+# names = ["Bruce","Clark","Peter","Logan"]
+# heros = ["Batman","Superman","Spideman","Wolwerine"]
+# mydict = {}
+# for name,hero in zip(names,heros):
+#     mydict[name]=hero
+#     print (mydict)
+
+# names = ["Bruce","Clark","Peter","Logan"]
+# heros = ["Batman","Superman","Spideman","Wolwerine"]
+# mydict = {name :hero for name,hero in zip(names,heros)}
+# print(mydict)
+
+
