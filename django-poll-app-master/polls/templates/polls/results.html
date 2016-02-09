@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<br>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DAVOR DJANGO POLL VOTING SITE</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="\static\css\bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="\static\css\modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="\static\font-awesome\css\font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+<h2><strong><center> DJANGO POWERED VOTING POLL by BIGDADDY </center></strong></h2>
+        <!-- Portfolio Section -->
+        <div class="row">
+            <div class="col-lg-12">
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <a>
+                    <center><img class="img-responsive img-portfolio img-hover" src="\static\images\picture1.jpg" alt=""></center>
+                </a>
+                <center><li><strong>Picture 1</strong></li></center>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <a>
+                    <center><img class="img-responsive img-portfolio img-hover" src="\static\images\picture2.jpg" alt=""></center>
+                </a>
+                <center><li><strong>Picture 2</strong></li></center>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <a>
+                    <center><img class="img-responsive img-portfolio img-hover" src="\static\images\picture3.jpg" alt=""></center>
+                </a>
+                <center><li><strong>Picture 3</strong></li></center>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <a>
+                    <center><img class="img-responsive img-portfolio img-hover" src="\static\images\picture4.jpg" alt=""></center>
+                </a>
+                <center><li><strong>Picture 4</strong></li></center>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <a>
+                    <center><img class="img-responsive img-portfolio img-hover" src="\static\images\picture5.jpg" alt=""></center>
+                </a>
+                <center><li><strong>Picture 5</strong></li></center>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <a>
+                    <center><img class="img-responsive img-portfolio img-hover" src="\static\images\picture6.jpg" alt=""></center>
+                </a>
+                <center><li><strong>Picture 6</strong></li></center>
+            </div>
+        </div>
+        <!-- /.row -->
+
+{% load staticfiles %}
+<h3><center><strong><p class="bg-success">The RESULT of a question "{{ poll.question }}" follows by Your voting so far:</p></strong></center></h3>
+</br>
+</br>
+</br>
+<p>
+{% for choice in poll.choice_set.all %}
+{% load staticfiles %}
+    <center><h4><li><font color="red">{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</font></li></h4></center>
+{% endfor %}
+</p>
+
+</br>
+</br>
+</br>
+{% load staticfiles %}
+<center><a class="btn btn-success" href="{% url 'polls:detail' poll.id %}" role="button">VOTE AGAIN !!!</a></center>
+</br>
+</br>
+<center><a class="btn btn-success" href="{% url 'polls:index' %}" role="button">Return to POLLS !!!</a></center>
+
+
+ <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5><center>Copyright &copy; BigDaddy POLL VOTING DJANGO site 2016</center></h5>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="\static\js\jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="\static\js\bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 3000 //changes the speed
+    })
+    </script>
+
+</body>
+
+</html>
