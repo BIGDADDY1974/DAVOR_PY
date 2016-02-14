@@ -1,15 +1,26 @@
 from flask import Flask, url_for, redirect, request, render_template;
 import MySQLdb;
 import redis;
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
+# This is a client for REDIS NOSQL database
 r = redis.StrictRedis('localhost',6379,0,charset="UTF-8",decode_responses=True);
+
+# This is a client for MONGO DB
+client = MongoClient('localhost',27017)
+db = client.tododb
 
 # This is a main route to main site Svilar davor portfolio
 @app.route('/')
 def portfolio():
     return render_template('index.html')
+
+# This is a change of color under the boostrap theme
+@app.route('/index1')
+def index1():
+    return render_template('index1.html')
 
 # This is a route to holistic site towards holistic.html
 @app.route('/holistic')
@@ -171,6 +182,23 @@ def question1(title):
             return render_template('Incorrect1.html', submittedAnswer = submittedAnswer, answer = answer);
     else:
         return '<h2>Invalid request</h2>';
+
+# This is a part of web Mongo db site
+@app.route('/todo')
+def todo():
+    _items = db.tododb.find()
+    items = [item for item in _items]
+    return render_template('todo.html', items=items)
+
+@app.route('/new', methods=['POST'])
+def new():
+    item_doc = {
+        'name': request.form['name'],
+        'description': request.form['description']
+    }
+    db.tododb.insert_one(item_doc)
+    return redirect(url_for('todo'))
+
 
 
 if __name__ == '__main__':

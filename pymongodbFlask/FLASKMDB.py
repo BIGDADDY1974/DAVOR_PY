@@ -4,7 +4,7 @@ import sys,os
 app = Flask(__name__)
 client = MongoClient('localhost',27017)
 db = client.tododb
-@app.route('/')
+@app.route('/todo')
 def todo():
     _items = db.tododb.find()
     items = [item for item in _items]
