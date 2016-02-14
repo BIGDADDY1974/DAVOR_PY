@@ -4181,3 +4181,22 @@ plt.show()
 # () {'c': 3, 'b': 2, 'a': 1}
 # () {'c': 3, 'b': 2, 'zzz': 'hi', 'a': 1}
 # (1, 2, 3) {'c': 3, 'b': 2, 'a': 1}
+
+
+#### MONGO DB
+# import pymongo
+# client = pymongo.MongoClient()
+# db = client.test
+# #object = db.sites.insert({"name":"Davor Svilar","age":"41"})
+# print(object)
+# site = db.sites.find()
+# siteone = db.sites.find_one()
+# print (site)
+# for line in site:
+#     print (line)
+# for line in siteone:
+#     print (line)
+# ime = siteone["name"]
+# god = siteone["age"]
+# print (ime,god)
+# print ("Moje ime je %s i ja imam %s godina" % (siteone["name"],siteone["age"]))
